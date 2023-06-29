@@ -80,4 +80,43 @@ class ProductRepositoryTest {
 
         productRepository.saveAll(List.of(product, product2, product3));
     }
+
+    @Test
+    void findAllMethod() {
+        List<Product> products = productRepository.findAll();
+        products.forEach(System.out::println);
+    }
+
+    @Test
+    void deleteByIdMethod() {
+        Long id = 1L;
+        productRepository.deleteById(id);
+    }
+
+    @Test
+    void deleteMethod() {
+        // find an entity by id
+        Long id = 4L;
+        Product product = productRepository.findById(id).get();
+        // delete (entity
+        productRepository.delete(product);
+    }
+
+    @Test
+    void deleteAllMethod() {
+        productRepository.deleteAll();
+    }
+
+    @Test
+    void countMethod() {
+        long count = productRepository.count();
+        System.out.println(count);
+    }
+
+    @Test
+    void existsByIdMethod() {
+        Long id = 1L;
+        boolean result = productRepository.existsById(id);
+        System.out.println(result);
+    }
 }
